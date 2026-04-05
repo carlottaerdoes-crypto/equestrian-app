@@ -1,1 +1,193 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#5b9ec9">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Equestrian Fit">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>Equestrian Fitness</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
 
+  <!-- HEADER -->
+  <header class="app-header" id="appHeader">
+    <div class="header-inner">
+      <div class="header-left">
+        <div class="app-tagline">Equestrian Fitness</div>
+        <div class="app-title">Mein <em>Training</em></div>
+      </div>
+      <div class="header-right">
+        <div class="header-horse" title="Equestrian Fitness">
+          <svg width="26" height="26" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Horse silhouette SVG -->
+            <path d="M34 8c-1 0-2 .5-2.5 1.5L30 12l-3-1c-2-.5-4-.5-6 .5-3 1.5-5 4-6 7l-1 4-3 2c-1.5 1-2.5 2.5-2.5 4.5V34h3v-4l2-1.5 1 5.5h3l-1-7 1-3c1-2.5 3-4.5 5.5-5.5l4-1.5c1.5-.5 3-.5 4.5 0l3 1-1 2.5-2-.5c-1-.3-2 .2-2.5 1L37 24l1.5 10H42L40 22l1.5-3.5c.5-1 .3-2.2-.5-3L38 13l1-2.5c.3-.8 0-1.8-.8-2.2A2 2 0 0034 8z" fill="rgba(245,237,224,0.85)"/>
+            <circle cx="36" cy="10" r="1.5" fill="rgba(245,237,224,0.6)"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SCROLL CONTENT -->
+  <div class="scroll-content" id="scrollContent">
+
+    <!-- ═══ PLAN TAB ═══ -->
+    <div class="section active" id="tab-plan">
+      <div class="week-section">
+        <!-- Week nav -->
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <button class="week-btn" style="background:var(--card);border:1.5px solid var(--border);border-radius:10px;padding:6px 12px;font-size:16px;color:var(--text);cursor:pointer" onclick="changeWeek(-1)">‹</button>
+          <span id="weekLabel" style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;flex:1;text-align:center;color:var(--text)">Woche 1</span>
+          <button class="week-btn" style="background:var(--card);border:1.5px solid var(--border);border-radius:10px;padding:6px 12px;font-size:16px;color:var(--text);cursor:pointer" onclick="changeWeek(1)">›</button>
+        </div>
+        <!-- 7-day row -->
+        <div class="week-row" id="weekGrid"></div>
+        <!-- Day detail -->
+        <div id="dayDetail"></div>
+        <!-- Legend -->
+        <div class="legend-row">
+          <div class="legend-item"><div class="legend-dot" style="background:var(--forest)"></div>Cardio</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--navy)"></div>Kraft</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--plum)"></div>Pilates</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--crimson)"></div>Turnier</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--stone)"></div>Recovery</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ WORKOUTS TAB ═══ -->
+    <div class="section" id="tab-workouts">
+      <div class="section-title">Workout Bibliothek</div>
+      <div class="section-sub">Alle Workouts auf einen Blick</div>
+      <div class="chip-row" id="workoutChips">
+        <button class="chip active" onclick="filterWorkouts('all',this)">Alle</button>
+        <button class="chip" onclick="filterWorkouts('lang',this)">Kraft 20min</button>
+        <button class="chip" onclick="filterWorkouts('kurz',this)">Quick 10min</button>
+        <button class="chip" onclick="filterWorkouts('cardio',this)">Cardio</button>
+        <button class="chip" onclick="filterWorkouts('preride',this)">Pre-ride</button>
+        <button class="chip" onclick="filterWorkouts('postride',this)">Post-ride</button>
+      </div>
+      <div class="workout-grid" id="workoutList"></div>
+      <div style="height:16px"></div>
+    </div>
+
+    <!-- ═══ YOGA TAB ═══ -->
+    <div class="section" id="tab-yoga">
+      <div class="section-title">Yoga & Recovery</div>
+      <div class="section-sub">10 Einheiten für Erholung & Mobilität</div>
+      <div class="workout-grid" id="yogaGrid"></div>
+      <div style="height:16px"></div>
+    </div>
+
+    <!-- ═══ PILATES TAB ═══ -->
+    <div class="section" id="tab-pilates">
+      <div class="section-title">Reformer Pilates</div>
+      <div class="section-sub">Fokus: Seat Symmetry · Core · Ruhige Beine</div>
+      <div class="workout-grid" id="pilatesPrograms" style="margin-bottom:8px"></div>
+      <div style="padding:0 16px 6px">
+        <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);font-weight:500;margin-bottom:10px">Einzelne Serien — mit Timer &amp; Schritt-Anleitungen</div>
+      </div>
+      <div class="workout-grid" id="reformerSeriesGrid"></div>
+      <div style="height:24px"></div>
+    </div>
+
+    <!-- ═══ TURNIERE TAB ═══ -->
+    <div class="section" id="tab-turniere">
+      <div class="section-title">Turnierkalender</div>
+      <div class="section-sub">Automatische Anpassung des Trainings</div>
+      <div style="padding:0 16px 16px">
+        <div class="info-banner">
+          <strong>Automatische Turnier-Logik:</strong> 2 Tage vorher kein Cardio · Tag davor nur leichte Mobilisation · Turniertag Pre-ride Routinen · <strong>Tag +1 Recovery Yoga</strong> · <strong>Tag +2 vollständiger Rest Day</strong>
+        </div>
+        <button class="primary-cta" style="margin:0 0 16px;width:100%;justify-content:center" onclick="openSheet('comp')">
+          + Neues Turnier eintragen
+        </button>
+        <div id="compList"></div>
+      </div>
+    </div>
+
+  </div><!-- /scroll-content -->
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" id="nav-plan" onclick="switchTab('plan',this)">
+      <span class="nav-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </span>
+      <span class="nav-label">Plan</span>
+    </button>
+    <button class="nav-item" id="nav-workouts" onclick="switchTab('workouts',this)">
+      <span class="nav-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5h11"/><path d="M6.5 17.5h11"/><path d="M3 9.5h18"/><path d="M3 14.5h18"/><circle cx="3" cy="9.5" r="1.5" fill="currentColor" stroke="none"/><circle cx="21" cy="9.5" r="1.5" fill="currentColor" stroke="none"/><circle cx="3" cy="14.5" r="1.5" fill="currentColor" stroke="none"/><circle cx="21" cy="14.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+      </span>
+      <span class="nav-label">Workouts</span>
+    </button>
+    <button class="nav-item" id="nav-yoga" onclick="switchTab('yoga',this)">
+      <span class="nav-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="1.5"/><path d="M12 6.5v4l-3 3"/><path d="M12 10.5l3 3"/><path d="M7 13.5c1 1.5 2.5 2 5 2s4-0.5 5-2"/><path d="M9 13.5l-2 4"/><path d="M15 13.5l2 4"/></svg>
+      </span>
+      <span class="nav-label">Yoga</span>
+    </button>
+    <button class="nav-item" id="nav-pilates" onclick="switchTab('pilates',this)">
+      <span class="nav-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="9" ry="5"/><path d="M12 7v10"/><path d="M3 12h18"/><path d="M5.5 8.5c0 0 2 2 6.5 2s6.5-2 6.5-2"/><path d="M5.5 15.5c0 0 2-2 6.5-2s6.5 2 6.5 2"/></svg>
+      </span>
+      <span class="nav-label">Pilates</span>
+    </button>
+    <button class="nav-item" id="nav-turniere" onclick="switchTab('turniere',this)">
+      <span class="nav-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H3a1 1 0 0 0-1 1v2a4 4 0 0 0 4 4"/><path d="M18 9h3a1 1 0 0 1 1 1v2a4 4 0 0 1-4 4"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v2a5 5 0 0 1-10 0V4Z"/></svg>
+      </span>
+      <span class="nav-label">Turniere</span>
+    </button>
+  </nav>
+
+  <!-- FAB: Add ride -->
+  <button class="fab" id="fabBtn" onclick="openSheet('ride')" title="Reiteinheit hinzufügen">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18c0-3 2-5 5-5h8c3 0 5 2 5 5"/><path d="M9 13V9a3 3 0 0 1 6 0v4"/><circle cx="12" cy="6" r="2"/><path d="M7 18v2"/><path d="M17 18v2"/></svg>
+  </button>
+
+  <!-- SHEET OVERLAY -->
+  <div class="sheet-overlay" id="sheetOverlay" onclick="closeSheet()"></div>
+
+  <!-- BOTTOM SHEET -->
+  <div class="bottom-sheet" id="bottomSheet">
+    <div class="sheet-handle"></div>
+    <div id="sheetContent"></div>
+  </div>
+
+  <!-- WORKOUT TIMER PANEL -->
+  <div id="workoutTimerPanel">
+    <div class="timer-handle" onclick="toggleTimer()"></div>
+    <div class="timer-workout-name" id="timerWorkoutName">Kein Workout ausgewählt</div>
+    <div class="timer-current-ex" id="timerCurrentEx">—</div>
+    <div class="timer-display" id="timerDisplay">00:00</div>
+    <div class="timer-phase-label" id="timerPhaseLabel">BEREIT</div>
+    <div class="timer-progress-bar"><div class="timer-progress-fill" id="timerProgressFill"></div></div>
+    <div class="timer-next-label" id="timerNextLabel"></div>
+    <div class="timer-btn-row">
+      <button class="timer-btn" onclick="timerSkipBack()">⏮</button>
+      <button class="timer-btn primary" id="timerStartBtn" onclick="timerToggle()">▶ Start</button>
+      <button class="timer-btn" onclick="timerSkipNext()">⏭</button>
+      <button class="timer-btn" onclick="closeTimer()" style="flex:0.6;font-size:16px">✕</button>
+    </div>
+    <div class="timer-ex-list" id="timerExList"></div>
+  </div>
+
+  <!-- TIMER FAB -->
+  <button id="timerFab" onclick="toggleTimer()" title="Workout Timer">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+  </button>
+
+</div><!-- /app-shell -->
+<script src="script.js"></script>
+</body>
+</html>
