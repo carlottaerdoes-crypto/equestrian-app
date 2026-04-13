@@ -162,17 +162,17 @@ input, select { font-family: inherit; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 6px 4px;
+  padding: 6px 2px;
   transition: all .2s;
   border-radius: var(--r-sm);
 }
 .nav-icon {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -181,10 +181,10 @@ input, select { font-family: inherit; }
   color: var(--text-3);
 }
 .nav-label {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 500;
   color: var(--text-3);
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
   transition: color .2s;
 }
 .nav-item.active .nav-label { color: var(--leather); }
@@ -493,6 +493,7 @@ input, select { font-family: inherit; }
 .wk-card.c-amber::before  { background: var(--leather); }
 .wk-card.c-teal::before   { background: var(--forest); }
 .wk-card.c-gray::before   { background: var(--stone); }
+.wk-card.c-rose::before   { background: #c0392b; }
 
 .wk-type-tag {
   display: inline-block;
