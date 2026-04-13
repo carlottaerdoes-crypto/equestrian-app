@@ -87,6 +87,41 @@
       <div style="height:16px"></div>
     </div>
 
+    <!-- ═══ MOBILITY TAB ═══ -->
+    <div class="section" id="tab-mobility">
+      <div class="section-title">Mobility</div>
+      <div class="section-sub">Beweglichkeit · Turniervorbereitung · Gelenke</div>
+
+      <!-- Turnier-Mobility Block -->
+      <div style="padding:0 16px 4px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+          <div style="flex:1;height:1px;background:rgba(192,57,43,0.15)"></div>
+          <div style="display:flex;align-items:center;gap:6px;background:rgba(192,57,43,0.08);border:1.5px solid rgba(192,57,43,0.2);border-radius:20px;padding:5px 14px">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H3a1 1 0 0 0-1 1v2a4 4 0 0 0 4 4"/><path d="M18 9h3a1 1 0 0 1 1 1v2a4 4 0 0 1-4 4"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v2a5 5 0 0 1-10 0V4Z"/></svg>
+            <span style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#c0392b">Vor dem Turnier</span>
+          </div>
+          <div style="flex:1;height:1px;background:rgba(192,57,43,0.15)"></div>
+        </div>
+        <div style="font-size:12px;color:var(--text-2);margin-bottom:12px;line-height:1.6">3 speziell entwickelte Routinen für den Turniertag — überall durchführbar.</div>
+      </div>
+      <div class="workout-grid" id="mobilityTurnierGrid"></div>
+
+      <!-- General Mobility Block -->
+      <div style="padding:16px 16px 4px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+          <div style="flex:1;height:1px;background:rgba(39,174,96,0.2)"></div>
+          <div style="display:flex;align-items:center;gap:6px;background:rgba(39,174,96,0.08);border:1.5px solid rgba(39,174,96,0.2);border-radius:20px;padding:5px 14px">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#27ae60" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg>
+            <span style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#27ae60">Mobility Workouts</span>
+          </div>
+          <div style="flex:1;height:1px;background:rgba(39,174,96,0.2)"></div>
+        </div>
+        <div style="font-size:12px;color:var(--text-2);margin-bottom:12px;line-height:1.6">10 Einheiten für Gelenke, Beweglichkeit & aktive Erholung.</div>
+      </div>
+      <div class="workout-grid" id="mobilityGrid"></div>
+      <div style="height:24px"></div>
+    </div>
+
     <!-- ═══ PILATES TAB ═══ -->
     <div class="section" id="tab-pilates">
       <div class="section-title">Reformer Pilates</div>
@@ -135,6 +170,12 @@
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="1.5"/><path d="M12 6.5v4l-3 3"/><path d="M12 10.5l3 3"/><path d="M7 13.5c1 1.5 2.5 2 5 2s4-0.5 5-2"/><path d="M9 13.5l-2 4"/><path d="M15 13.5l2 4"/></svg>
       </span>
       <span class="nav-label">Yoga</span>
+    </button>
+    <button class="nav-item" id="nav-mobility" onclick="switchTab('mobility',this)">
+      <span class="nav-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2"/><path d="M12 6v6l3 3"/><path d="M8 12H4"/><path d="M20 12h-4"/><path d="M12 20v-4"/></svg>
+      </span>
+      <span class="nav-label">Mobility</span>
     </button>
     <button class="nav-item" id="nav-pilates" onclick="switchTab('pilates',this)">
       <span class="nav-icon">
